@@ -17,8 +17,8 @@
     "scripts": {
         "prepare": "husky install",
         "lint": "eslint . --ext .js --ext .ts",
-        "format": "prettier --write 'src/**/*.*.ts'",
-        "isReady": ""
+        "format": "prettier --write src/**/*.ts",
+        "lint-staged": "lint-staged"
     },
     "husky": {
         "hooks": {
@@ -27,7 +27,8 @@
     },
     "lint-staged": {
         "**/*.{js,ts,tsx}": [
-            "yarn lint"
+            "yarn lint",
+            "yarn format"
         ]
     }
 }
