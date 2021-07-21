@@ -1,19 +1,33 @@
 {
-  "name": "@app/husky",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.28.4",
-    "@typescript-eslint/parser": "^4.28.4",
-    "eslint": "^7.31.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "husky": "^7.0.1",
-    "prettier": "^2.3.2",
-    "typescript": "^4.3.5"
-  },
-  "scripts": {
-    "prepare": "husky install"
-  }
+    "name": "@app/husky",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^4.28.4",
+        "@typescript-eslint/parser": "^4.28.4",
+        "eslint": "^7.31.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^3.4.0",
+        "husky": "^7.0.1",
+        "lint-staged": "^11.0.1",
+        "prettier": "^2.3.2",
+        "typescript": "^4.3.5"
+    },
+    "scripts": {
+        "prepare": "husky install",
+        "lint": "eslint . --ext .js --ext .ts",
+        "format": "prettier --write 'src/**/*.*.ts'",
+        "isReady": ""
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "**/*.{js,ts,tsx}": [
+            "yarn lint"
+        ]
+    }
 }
